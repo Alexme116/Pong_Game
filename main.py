@@ -8,6 +8,7 @@ def point():
     ball.goto(0,0)
     ball.bounce_x()
     score.resetPoint(paddle_l.score, paddle_r.score)
+    screen.update()
 
 screen = Screen()
 screen.setup(width=800, height=600)
@@ -33,6 +34,8 @@ ball = Ball()
 score = Score(paddle_l.score, paddle_r.score)
 
 game_is_on = True
+screen.update()
+time.sleep(1)
 while game_is_on:
     time.sleep(0.05)
     screen.update()
@@ -44,9 +47,11 @@ while game_is_on:
     if ball.xcor() > 380:
         paddle_l.point()
         point()
+        time.sleep(1)
     elif ball.xcor() < -380:
         paddle_r.point()
         point()
+        time.sleep(1)
     if paddle_r.score == 5 or paddle_l.score == 5:
         game_is_on = False
         screen.clear()
